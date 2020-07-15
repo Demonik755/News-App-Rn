@@ -1,28 +1,38 @@
-import React from 'react';
-import {StyleSheet, View} from 'react-native';
-import {NavBar} from "./src/Navbar";
-import Screen from "./src/Screen";
+import React, {useState} from 'react';
+import {StyleSheet, View, } from 'react-native';
+import {NavBar} from "./src/components/Navbar";
+import {AddNews} from "./src/components/AddNews";
+import {News} from "./src/components/News";
 
 export default function App() {
+    const [news, setNews] = useState([]);
+    const addNews =(title) => {
+        setNews(prev =>[
+            ...prev,
+            {
+                id: Date.now().toString(),
+                title: title,
+                // description:description,
+            }
+        ])
+    };
   return (
-    <View  style={styles.container} >
-      <View style={styles.NavBarContainer}>
+    <View>
         <NavBar/>
-      </View>
+      <View style={styles.container}>
+          <AddNews onSubmit={addNews}/>
 
-      <View style={styles.NewsContainer}>
-      <Screen/>
       </View>
+        <View>
+            {news.map(news=> <News key={news.id} news={news}/>)}
+        </View>
     </View>
 
   );
 }
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-  },
-  NewsContainer: {
-    flex: 1
+    paddingVertical:  40
   },
 });
 

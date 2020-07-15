@@ -12,7 +12,6 @@ export const NavBar = () => {
 };
 const styles = StyleSheet.create({
     NavBarContainer: {
-
         backgroundColor: "#0678ba",
         height: 65,
         alignItems: "center",
