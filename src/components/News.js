@@ -30,9 +30,6 @@ export const News = ({news}) => {
 const styles = StyleSheet.create({
     news: {
         flexDirection: 'row',
-        // flex: 1,
         height: 100
-
-
     }
 });

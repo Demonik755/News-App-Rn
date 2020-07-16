@@ -6,13 +6,13 @@ import {News} from "./src/components/News";
 
 export default function App() {
     const [news, setNews] = useState([]);
-    const addNews =(title) => {
+    const addNews =(title,description) => {
         setNews(prev =>[
             ...prev,
             {
                 id: Date.now().toString(),
                 title: title,
-                // description:description,
+                description:description,
             }
         ])
     };
