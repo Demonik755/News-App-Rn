@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View, Animated, TouchableOpacity } from 'react-native';
 import {Body, Container, Content, Left, List, ListItem, Right, Text, Thumbnail, Button} from "native-base";
 import Swipeable from "react-native-gesture-handler/Swipeable";
-export const News = ({news, onRemove}) => {
+export const News = ({news, onRemove, onOpen}) => {
     const rightActions= (progress, dragX) => {
         const scale = dragX.interpolate({
             inputRange: [-50, 200],
@@ -10,7 +10,7 @@ export const News = ({news, onRemove}) => {
             extrapolate: 'clamp'
         });
         return(
-            <TouchableOpacity onLongPress={()=>onRemove(news.id)}>
+            <TouchableOpacity onPress={()=>onRemove(news.id)}>
                 <View style={styles.rightAction}>
                     <Animated.Text style={[styles.actionText, {transform: [{scale}]}]}>
                         Delete
@@ -35,7 +35,7 @@ export const News = ({news, onRemove}) => {
                                     <Text note numberOfLines={2}>{news.description}. .</Text>
                                 </Body>
                                 <Right>
-                                    <Button transparent>
+                                    <Button transparent onPress={() => onOpen(news.id)}>
                                         <Text>View</Text>
                                     </Button>
                                 </Right>

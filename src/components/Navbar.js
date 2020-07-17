@@ -13,12 +13,12 @@ export const NavBar = () => {
 const styles = StyleSheet.create({
     NavBarContainer: {
         backgroundColor: "#0678ba",
-        height: "10%",
+        height: "9%",
         alignItems: "center",
         justifyContent: "center"
     },
     NavBarTitle: {
         color: "#fff",
-        fontSize: 26
+        fontSize: 25
     }
 });

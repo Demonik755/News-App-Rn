@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
-import {StyleSheet, View, FlatList } from 'react-native';
+import {StyleSheet, View } from 'react-native';
 import {NavBar} from "./src/components/Navbar";
-import {AddNews} from "./src/components/AddNews";
-import {News} from "./src/components/News";
+import {MainScreen} from "./src/screens/MainScreen";
+import {NewsScreen} from "./src/screens/NewsScreen"
 
 export default function App() {
+    const [newsId, setNewsId] = useState(null);
     const [news, setNews] = useState([
         {id: 1, title: "hello", description: "hello world1"},
         {id: 2, title: "hello", description: "hello world2"},
@@ -30,15 +31,18 @@ export default function App() {
     const removeNews = id => {
         setNews(prev => prev.filter(news=>news.id !==id))
     };
+    let fullNews = (
+        <MainScreen addNews={addNews} removeNews={removeNews} news={news} openNews={setNewsId}/>
+    );
+    if (newsId) {
+        fullNews = <NewsScreen/>
+    }
+
   return (
     <View>
         <NavBar/>
       <View style={styles.container}>
-          <AddNews onSubmit={addNews}/>
-          <FlatList
-              keyExtractor={item => item.id.toString()}
-              data={news}
-              renderItem={({item}) => (<News news={item} onRemove={removeNews}/>) }/>
+          {fullNews}
       </View>
     </View>
   );
@@ -46,7 +50,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
       paddingVertical:  40,
-      height: "90%",
+      height: "87%",
   },
 });
 
