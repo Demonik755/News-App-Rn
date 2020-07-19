@@ -7,7 +7,7 @@ import {NewsScreen} from "./src/screens/NewsScreen"
 export default function App() {
     const [newsId, setNewsId] = useState(null);
     const [news, setNews] = useState([
-        {id: 1, title: "hello", description: "hello world1"},
+        {id: 1, title: "hellodawdawdwawdawdd a wad  awd awd ad", description: "hello world1hello world1hello world1hello world1hello world1hello world1hello world1hello world1hello world1hello world1hello world1hello world1hello world1hello world1hello world1hello world1hello world1hello world1hello world1hello world1ABG"},
         {id: 2, title: "hello", description: "hello world2"},
         {id: 3, title: "hello", description: "hello world3"},
         {id: 4, title: "hello", description: "hello world4"},
@@ -35,7 +35,8 @@ export default function App() {
         <MainScreen addNews={addNews} removeNews={removeNews} news={news} openNews={setNewsId}/>
     );
     if (newsId) {
-        fullNews = <NewsScreen/>
+        const selectedNews = news.find(news => news.id === newsId);
+        fullNews = <NewsScreen news={selectedNews} goBack={()=>setNewsId(null)}/>
     }
 
   return (

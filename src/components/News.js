@@ -17,7 +17,6 @@ export const News = ({news, onRemove, onOpen}) => {
                     </Animated.Text>
                 </View>
             </TouchableOpacity>
-
         )
     };
     return (
