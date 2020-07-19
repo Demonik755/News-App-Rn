@@ -4,27 +4,27 @@ import { Container,  Content, Card, CardItem, Left, Body } from 'native-base';
 export const NewsScreen = ({news, goBack}) =>  {
         return (
             <View style={styles.fullNewsWrapper}>
-                <Container>
-                    <Content>
-                        <Card >
-                            <CardItem>
-                                <Left>
+                    <Container>
+                        <Content>
+                            <Card >
+                                <CardItem>
+                                    <Left>
+                                        <Body>
+                                            <Text style={styles.title}>{news.title}</Text>
+                                        </Body>
+                                    </Left>
+                                </CardItem>
+                                <CardItem>
                                     <Body>
-                                        <Text style={styles.title}>{news.title}</Text>
+                                        <Image source={{uri: 'http://www.sensawine.com/Blog/wp-content/uploads/2012/03/news.jpg'}} style={{height: 180, width: 300, flex: 1}}/>
+                                        <Text style={styles.description}>
+                                            {news.description}
+                                        </Text>
                                     </Body>
-                                </Left>
-                            </CardItem>
-                            <CardItem>
-                                <Body>
-                                    <Image source={{uri: 'http://www.sensawine.com/Blog/wp-content/uploads/2012/03/news.jpg'}} style={{height: 180, width: 300, flex: 1}}/>
-                                    <Text style={styles.description}>
-                                        {news.description}
-                                    </Text>
-                                </Body>
-                            </CardItem>
-                        </Card>
-                    </Content>
-                </Container>
+                                </CardItem>
+                            </Card>
+                        </Content>
+                    </Container>
                 <View style={styles.btn}>
                     <Button  title="Back" onPress={goBack}> </Button>
                 </View>
@@ -46,6 +46,6 @@ const styles = StyleSheet.create({
         paddingVertical: 10,
     },
     btn: {
-
+        flexDirection: 'column',
     }
 });

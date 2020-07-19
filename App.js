@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {StyleSheet, View } from 'react-native';
 import {NavBar} from "./src/components/Navbar";
 import {MainScreen} from "./src/screens/MainScreen";
-import {NewsScreen} from "./src/screens/NewsScreen"
+import {NewsScreen} from "./src/screens/NewsScreen";
 
 export default function App() {
     const [newsId, setNewsId] = useState(null);
