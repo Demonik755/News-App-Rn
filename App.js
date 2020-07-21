@@ -1,23 +1,14 @@
 import React, {useState} from 'react';
-import {StyleSheet, View } from 'react-native';
+import {StyleSheet, View, Image } from 'react-native';
 import {NavBar} from "./src/components/Navbar";
 import {MainScreen} from "./src/screens/MainScreen";
 import {NewsScreen} from "./src/screens/NewsScreen";
 
+
 export default function App() {
     const [newsId, setNewsId] = useState(null);
-    const [news, setNews] = useState([
-        {id: 1, title: "hellodawdawdwawdawdd a wad  awd awd ad", description: "hello world1hello world1hello world1hello world1hello world1hello world1hello world1hello world1hello world1hello world1hello world1hello world1hello world1hello world1hello world1hello world1hello world1hello world1hello world1hello world1ABG"},
-        {id: 2, title: "hello", description: "hello world2"},
-        {id: 3, title: "hello", description: "hello world3"},
-        {id: 4, title: "hello", description: "hello world4"},
-        {id: 5, title: "hello", description: "hello world5"},
-        {id: 6, title: "hello", description: "hello world6"},
-        {id: 7, title: "hello", description: "hello world7"},
-        {id: 8, title: "hello", description: "hello world8"},
-        {id: 9, title: "hello", description: "hello world9"},
-        {id: 10, title: "hello", description: "hello world10"},
-    ]);
+    const [news, setNews] = useState([]);
+
     const addNews =(title,description) => {
         setNews(prev =>[
             {

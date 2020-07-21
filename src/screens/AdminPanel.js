@@ -1,14 +1,14 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 
-export const AdminPanel = ({navigation}) => {
+export const AdminPanel = ({}) => {
 
     return (
-        <View style={styles.NavBarContainer}>
-            <Text style={styles.NavBarTitle}>
+        <View >
+            <Text >
                admin
             </Text>
-            <Button title="Go back" onPress={() => navigation.goBack()} />
+            <Button title="Go back"  />
         </View>
     )
 };
