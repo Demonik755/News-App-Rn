@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
-import { StyleSheet, TextInput,Button, View, Alert } from 'react-native';
+import { StyleSheet, TextInput,Button, View, Alert, Keyboard } from 'react-native';
 export const AddNews = ({onSubmit}) => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const pressHandler = () => {
         if (title.trim() && description.trim()) {
             onSubmit(title, description);
+            Keyboard.dismiss();
         }else {
             Alert.alert("Input cannot be empty!")
         }
