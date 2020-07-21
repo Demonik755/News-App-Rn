@@ -31,7 +31,7 @@ export const News = ({news, onRemove, onOpen}) => {
                                 </Left>
                                 <Body>
                                     <Text >{news.title}</Text>
-                                    <Text note numberOfLines={2}>{news.description}. .</Text>
+                                    <Text note numberOfLines={1.5}>{news.description}. .</Text>
                                 </Body>
                                 <Right>
                                     <Button transparent onPress={() => onOpen(news.id)}>
@@ -55,6 +55,7 @@ const styles = StyleSheet.create({
         backgroundColor: "red",
         justifyContent: "center",
         alignItems: "flex-end",
+        height: "100%"
 
     },
     actionText:{

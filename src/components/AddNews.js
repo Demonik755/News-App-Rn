@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
     block: {
         flexDirection: "column",
         alignItems: "center",
+        height: "35%"
     },
     input: {
         width: "70%",

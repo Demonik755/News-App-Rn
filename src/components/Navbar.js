@@ -13,7 +13,7 @@ export const NavBar = () => {
 const styles = StyleSheet.create({
     NavBarContainer: {
         backgroundColor: "#0678ba",
-        height: "9%",
+        height: "10%",
         alignItems: "center",
         justifyContent: "center"
     },

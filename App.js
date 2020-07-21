@@ -42,7 +42,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
       paddingVertical:  40,
-      height: "87%",
+      height: "73%",
   },
 });
 
