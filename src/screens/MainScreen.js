@@ -1,24 +1,11 @@
-import React, { useState, useEffect} from 'react';
-import {FlatList, Image, StyleSheet, View, Dimensions} from 'react-native';
+import React, {} from 'react';
+import {FlatList, Image, StyleSheet, View, } from 'react-native';
 import {AddNews} from "../components/AddNews";
 import {News} from "../components/News";
 export const MainScreen =({addNews, news, removeNews, openNews}) => {
-    const [deviceWidth, setDeviceWidth] = useState (
-        Dimensions.get("window").width - 40 *200
-    );
-    useEffect(() => {
-        const update = () => {
-            const width = Dimensions.get("window").width - 40 *20;
-            setDeviceWidth(width)
-        };
-        Dimensions.addEventListener("change", update);
-        return () => {
-            Dimensions.removeEventListener("change", update)
-        }
-    });
 
-    let fullNews = (
-        <View style={deviceWidth}>
+    let content = (
+        <View >
             <FlatList
                 keyExtractor={item => item.id.toString()}
                 data={news}
@@ -29,7 +16,7 @@ export const MainScreen =({addNews, news, removeNews, openNews}) => {
 
     );
     if (!news.length) {
-        fullNews = (
+        content = (
             <View  style={styles.imgWrapper}>
                 <Image style={styles.img} source={require("../../assets/Newspaper.png")}/>
             </View>
@@ -38,7 +25,7 @@ export const MainScreen =({addNews, news, removeNews, openNews}) => {
         return (
             <View>
                 <AddNews onSubmit={addNews}/>
-                <View>{fullNews}</View>
+                <View>{content}</View>
             </View>
         );
 };

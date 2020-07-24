@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, } from 'react-native';
+import {Dimensions, StyleSheet, Text, View,} from 'react-native';
 
 export const NavBar = () => {
     return (
@@ -13,7 +13,7 @@ export const NavBar = () => {
 const styles = StyleSheet.create({
     NavBarContainer: {
         backgroundColor: "#0678ba",
-        height: "10%",
+        height: Dimensions.get('window').height / 3 < 50 ? 100 : 50,
         alignItems: "center",
         justifyContent: "center"
     },

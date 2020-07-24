@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text,Image,Button, Dimensions } from 'react-native';
+import { StyleSheet, View, Text,Image,Button, } from 'react-native';
 export const NewsScreen = ({news, goBack}) =>  {
         return (
            <View>

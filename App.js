@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {StyleSheet, View, Image } from 'react-native';
+import {StyleSheet, View, Dimensions } from 'react-native';
 import {NavBar} from "./src/components/Navbar";
 import {MainScreen} from "./src/screens/MainScreen";
 import {NewsScreen} from "./src/screens/NewsScreen";
@@ -22,27 +22,27 @@ export default function App() {
     const removeNews = id => {
         setNews(prev => prev.filter(news=>news.id !==id))
     };
-    let fullNews = (
+    let content = (
         <MainScreen addNews={addNews} removeNews={removeNews} news={news} openNews={setNewsId}/>
     );
     if (newsId) {
         const selectedNews = news.find(news => news.id === newsId);
-        fullNews = <NewsScreen news={selectedNews} goBack={()=>setNewsId(null)}/>
+        content = <NewsScreen news={selectedNews} goBack={()=>setNewsId(null)}/>
     }
 
   return (
     <View>
         <NavBar/>
       <View style={styles.container}>
-          {fullNews}
+          {content}
       </View>
     </View>
   );
 }
 const styles = StyleSheet.create({
   container: {
-      paddingVertical:  40,
-      height: "73%",
+      paddingVertical:  20,
+      height: Dimensions.get('window').height / 3 < 250 ? 300 : 190,
   },
 });
 
