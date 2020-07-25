@@ -7,7 +7,7 @@ export default function App() {
   return (
       <NewsState>
         <MainLayout />
-    </NewsState>
+      </NewsState>
   );
 }
 

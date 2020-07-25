@@ -6,29 +6,29 @@ import {NewsScreen} from "./screens/NewsScreen";
 import {NewsContext} from "./context/news/newsContext";
 
 export const MainLayout =() => {
-    const newsContext = useContext(NewsContext);
+    const {news, addNews, removeNews} = useContext(NewsContext);
     const [newsId, setNewsId] = useState(null);
-    const [news, setNews] = useState([]);
+    // const [news, setNews] = useState([]);
 
     if (newsId) {
         const selectedNews = news.find(news => news.id === newsId);
         content = <NewsScreen news={selectedNews} goBack={()=>setNewsId(null)}/>
     }
-    const addNews =(title,description) => {
-        setNews(prev =>[
-            {
-                id: Date.now().toString(),
-                title: title,
-                description:description,
-            },
-            ...prev,
-        ])
-    };
-    const removeNews = id => {
-        setNews(prev => prev.filter(news=>news.id !==id))
-    };
+    // const addNews =(title,description) => {
+    //     setNews(prev =>[
+    //         {
+    //             id: Date.now().toString(),
+    //             title: title,
+    //             description:description,
+    //         },
+    //         ...prev,
+    //     ])
+    // };
+    // const removeNews = id => {
+    //     setNews(prev => prev.filter(news=>news.id !==id))
+    // };
     let content = (
-        <MainScreen addNews={addNews} removeNews={removeNews} news={newsContext.news} openNews={setNewsId}/>
+        <MainScreen addNews={addNews} removeNews={removeNews} news={news} openNews={setNewsId}/>
     );
     return (
         <View>
