@@ -1,8 +1,12 @@
-import React, {} from 'react';
+import React, {useContext} from 'react';
 import {FlatList, Image, StyleSheet, View, } from 'react-native';
 import {AddNews} from "../components/AddNews";
 import {News} from "../components/News";
-export const MainScreen =({addNews, news, removeNews, openNews}) => {
+import {NewsContext} from "../context/news/newsContext";
+import {ScreenContext} from "../context/screen/screenContext";
+export const MainScreen = () => {
+    const {addNews, news, removeNews, } = useContext(NewsContext);
+    const {changeScreen} = useContext(ScreenContext);
 
     let content = (
         <View >
@@ -10,7 +14,7 @@ export const MainScreen =({addNews, news, removeNews, openNews}) => {
                 keyExtractor={item => item.id.toString()}
                 data={news}
                 renderItem={({item}) => (<News news={item}
-                                               onOpen={openNews}
+                                               onOpen={changeScreen}
                                                onRemove={removeNews}/>) }/>
         </View>
 

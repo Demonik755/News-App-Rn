@@ -1,6 +1,11 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { StyleSheet, View, Text,Image,Button, } from 'react-native';
-export const NewsScreen = ({news, goBack}) =>  {
+import {NewsContext} from "../context/news/newsContext";
+import {ScreenContext} from "../context/screen/screenContext";
+export const NewsScreen = () =>  {
+    const {news} = useContext(NewsContext);
+    const {newsId, changeScreen} = useContext(ScreenContext);
+    const item = news.find(n => n.id === newsId);
         return (
            <View>
                <View style={styles.fullNewsWrapper}>
@@ -10,16 +15,16 @@ export const NewsScreen = ({news, goBack}) =>  {
                        </View>
                        <View style={{height: "60%", width: "60%", }}>
                            <Text style={styles.title}>
-                               {news.title}
+                               {item.title}
                            </Text>
                        </View>
                    </View>
                    <Text style={styles.description}>
-                       {news.description}
+                       {item.description}
                    </Text>
                </View>
                <View style={styles.btn}>
-                   <Button  title="Back" onPress={goBack}> </Button>
+                   <Button  title="Back" onPress={() => changeScreen(null)}> </Button>
                </View>
            </View>
 
