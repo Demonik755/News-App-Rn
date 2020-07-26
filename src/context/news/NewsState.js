@@ -11,6 +11,7 @@ export const NewsState = ({children}) => {
     };
     const [state, dispatch] = useReducer(newsReducer, initialState);
     const addNews = async (title, description) => {
+        showLoader();
         const response = await fetch("https://newsapp-rn.firebaseio.com/news.json", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
@@ -19,19 +20,35 @@ export const NewsState = ({children}) => {
         const data = await response.json();
         console.log(data);
         dispatch({type: ADD_NEWS, title, description, id: data.name});
-    }
+        hideLoader();
+    };
 
     const removeNews = id => dispatch({type: REMOVE_NEWS, id});
+    const fetchNews = async () => {
+        showLoader();
+        const response = await fetch("https://newsapp-rn.firebaseio.com/news.json", {
+            method: "GET",
+            headers: {"Content-Type": "application/json"},
+        });
+        const data = await response.json();
+        const news = Object.keys(data).map(key => ({...data[key], id: key}));
+        dispatch({type: FETCH_NEWS, news});
+        hideLoader();
+        console.log(data);
+    };
     const showLoader = () => dispatch({type: SHOW_LOADER});
     const hideLoader = () => dispatch({type: HIDE_LOADER});
     const showError = (error) => dispatch({SHOW_ERROR, error});
     const hideError = (error) => dispatch({HIDE_ERROR});
-    const fetchNews = (title, description) => dispatch({type: FETCH_NEWS, title, description});
+    // const fetchNews = (title, description) => dispatch({type: FETCH_NEWS, title, description});
     return <NewsContext.Provider
         value={{
             news: state.news,
+            error: state.error,
+            loading: state.loading,
             addNews,
-            removeNews
+            removeNews,
+            fetchNews,
         }}>
         {children}
     </NewsContext.Provider>
