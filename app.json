@@ -4,14 +4,13 @@
     "slug": "NewsApp",
     "platforms": [
       "ios",
-      "android",
-      "web"
+      "android"
     ],
     "version": "1.0.0",
     "orientation": "default",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/icon-news.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/splash-news.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -22,7 +21,14 @@
       "**/*"
     ],
     "ios": {
+      "bundleIdentifier": "com.demonik.rn-news",
+      "buildNumber": "1.0.0",
       "supportsTablet": true
+    },
+    "android": {
+      "package": "com.demonik.rn_news",
+      "versionCode": 1,
+      "permissions": ["READ_EXTERNAL_STORAGE", "MANAGE_DOCUMENTS"]
     }
   }
 }
