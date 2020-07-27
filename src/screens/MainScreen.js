@@ -1,10 +1,11 @@
 import React, {useContext, useEffect, useCallback} from 'react';
-import {FlatList, Image, StyleSheet, View, } from 'react-native';
+import {FlatList, Image, StyleSheet, View, Text } from 'react-native';
 import {AddNews} from "../components/AddNews";
 import {News} from "../components/News";
 import {NewsContext} from "../context/news/newsContext";
 import {ScreenContext} from "../context/screen/screenContext";
 import {Loader} from "../components/UI/Loader";
+
 export const MainScreen = () => {
     const {addNews, news, removeNews, fetchNews, error, loading } = useContext(NewsContext);
     const {changeScreen} = useContext(ScreenContext);
@@ -12,7 +13,10 @@ export const MainScreen = () => {
     const loadNews = useCallback(async () => await fetchNews(), [fetchNews]);
 
     useEffect(() =>{
-        loadNews()
+        loadNews();
+        return function cleanup() {
+            API.unsubscribe()
+        }
     }, []);
 
     if (loading) {
@@ -20,6 +24,15 @@ export const MainScreen = () => {
             <Loader/>
         )
     }
+    // if (error) {
+    //     return (
+    //         <View>
+    //             <Text>
+    //                 {error}
+    //             </Text>
+    //         </View>
+    //         )
+    // }
 
     let content = (
         <View >

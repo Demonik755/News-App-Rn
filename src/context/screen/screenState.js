@@ -11,4 +11,4 @@ export const ScreenState = ({children}) => {
             {children}
         </ScreenContext.Provider>
     )
-}
+};
