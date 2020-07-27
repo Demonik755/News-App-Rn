@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {} from 'react';
 import { StyleSheet, View, Animated, TouchableOpacity } from 'react-native';
 import {Body, Container, Content, Left, List, ListItem, Right, Text, Thumbnail, Button} from "native-base";
 import Swipeable from "react-native-gesture-handler/Swipeable";
+
 export const News = ({news, onRemove, onOpen}) => {
     const rightActions= (progress, dragX) => {
         const scale = dragX.interpolate({

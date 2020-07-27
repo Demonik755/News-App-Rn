@@ -11,7 +11,6 @@ export const NewsState = ({children}) => {
     };
     const [state, dispatch] = useReducer(newsReducer, initialState);
     const addNews = async (title, description) => {
-        showLoader();
         const response = await fetch("https://newsapp-rn.firebaseio.com/news.json", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
@@ -20,10 +19,16 @@ export const NewsState = ({children}) => {
         const data = await response.json();
         console.log(data);
         dispatch({type: ADD_NEWS, title, description, id: data.name});
-        hideLoader();
     };
 
-    const removeNews = id => dispatch({type: REMOVE_NEWS, id});
+    const removeNews = async id => {
+        await fetch(`https://newsapp-rn.firebaseio.com/news/${id}.json`,{
+            method: "DELETE",
+            headers: {"Content-Type": "application/json"},
+        });
+        dispatch({type: REMOVE_NEWS, id});
+    };
+
     const fetchNews = async () => {
         showLoader();
         const response = await fetch("https://newsapp-rn.firebaseio.com/news.json", {
