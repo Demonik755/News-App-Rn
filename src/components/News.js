@@ -3,7 +3,7 @@ import { StyleSheet, View, Animated, TouchableOpacity } from 'react-native';
 import {Body, Container, Content, Left, List, ListItem, Right, Text, Thumbnail, Button} from "native-base";
 import Swipeable from "react-native-gesture-handler/Swipeable";
 
-export const News = ({news, onRemove, onOpen}) => {
+export const News = ({news, onRemove, onOpen, navigation }) => {
     const rightActions= (progress, dragX) => {
         const scale = dragX.interpolate({
             inputRange: [-50, 200],

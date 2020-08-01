@@ -7,9 +7,10 @@ import {ADD_NEWS, FETCH_NEWS, HIDE_ERROR, HIDE_LOADER, REMOVE_NEWS, SHOW_ERROR, 
 export const NewsState = ({children}) => {
     const initialState = {
         news: [],
-        error: false,
+        error: null,
         loading: false,
     };
+
     const [state, dispatch] = useReducer(newsReducer, initialState);
     const addNews = async (title, description) => {
         try {
@@ -33,18 +34,12 @@ export const NewsState = ({children}) => {
 
          const fetchNews = async () => {
             showLoader();
-            hideError();
-            try {
                 const data = await Http.get("https://newsapp-rn.firebaseio.com/news.json");
                 const news = Object.keys(data).map(key => ({...data[key], id: key}));
                 dispatch({type: FETCH_NEWS, news});
-            }catch (e) {
-                showError("ERROR");
-                console.log(e)
-            }finally {
-                hideLoader()
-            }
+                hideLoader();
     };
+
 
 
     const showLoader = () => dispatch({type: SHOW_LOADER});
