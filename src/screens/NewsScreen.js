@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import { StyleSheet, View, Text,Image,Button, } from 'react-native';
+import { StyleSheet, View, Text,Image,Button,ScrollView  } from 'react-native';
 import {NewsContext} from "../context/news/newsContext";
 import {ScreenContext} from "../context/screen/screenContext";
 export const NewsScreen = () =>  {
@@ -7,7 +7,7 @@ export const NewsScreen = () =>  {
     const {newsId, changeScreen} = useContext(ScreenContext);
     const item = news.find(n => n.id === newsId);
         return (
-           <View>
+           <ScrollView >
                <View style={styles.fullNewsWrapper}>
                    <View style={styles.headerNewsWrapper}>
                        <View style={{height: "40%", width: "40%", }}>
@@ -26,7 +26,7 @@ export const NewsScreen = () =>  {
                <View style={styles.btn}>
                    <Button  title="Back" onPress={() => changeScreen(null)}> </Button>
                </View>
-           </View>
+           </ScrollView >
 
         );
 };

@@ -1,5 +1,5 @@
 import React, {useState,useContext} from 'react';
-import {StyleSheet, TextInput, Button, View, Alert, Keyboard, Dimensions} from 'react-native';
+import {StyleSheet, TextInput, Button, View, Alert, Keyboard, } from 'react-native';
 import {NewsContext} from "../context/news/newsContext";
 export const AddNews = () => {
     const [title, setTitle] = useState('');
@@ -37,7 +37,6 @@ const styles = StyleSheet.create({
         flexDirection: "column",
         alignItems: "center",
         paddingTop: 30,
-        // height: Dimensions.get('window').height / 3 < 50 ? 100 : 120,
     },
     input: {
         width: "80%",
